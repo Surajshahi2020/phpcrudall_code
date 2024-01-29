@@ -1,0 +1,94 @@
+<form action="process.php" method="POST" onsubmit="return validateForm()">
+    <label for="id">Id</label><br>
+    <input type="number" id="id" name="id"><br><br>
+
+    <label for="username">Username</label><br>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="email">Email</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="password">Password</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <label for="age">Age</label><br>
+    <input type="number" id="age" name="age" required><br><br>
+ 
+    <label for="phone">Phone</label><br>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10 digit phone number" required><br><br>
+
+    <label for="birth">Date of Birth</label><br>
+    <input type="text" id="birth" name="birth" required><br><br>
+
+    <label for="hobby">Select Hobbies:</label><br>
+    <input type="checkbox" id="cricket" name="cricket" value="cricket">
+    <label for="cricket">Cricket</label><br>
+    <input type="checkbox" id="football" name="football" value="football">
+    <label for="football">Football</label><br>
+    <input type="checkbox" id="volleyball" name="volleyball" value="volleyball">
+    <label for="volleyball">Volleyball</label><br><br>
+
+    <label for="language">Choose your language:</label><br>
+    <input type="radio" id="nepali" name="language" value="nepali">
+    <label for="cricket">Nepali</label><br>
+    <input type="radio" id="english" name="language" value="english">
+    <label for="football">English</label><br>
+    <input type="radio" id="hindi" name="language" value="hindi">
+    <label for="volleyball">Hindi</label><br><br>
+
+    <label for="description">Description</label><br>
+    <textarea id="description" name="description" rows="4" cols="25" required>
+    </textarea><br><br>
+
+    <label for="url">Website Url</label><br>
+    <input type="url" id="url" name="url" required><br><br>
+
+    <label for="skills">Python Rating</label><br>
+    <input type="range" id="skills" name="skills" min="0" max="100"><br><br>
+
+    <label for="country">Choose your country</label><br>
+    <select id="country" name="country">
+      <option value="Nepal" selected>Nepal</option>
+      <option value="US">US</option>
+      <option value="India">India</option>
+      <option value="Australia">Australia</option>
+    </select><br><br>
+
+    <input type="submit" name="submit" value="Insert">
+    <input type="submit" name="submit" value="Update">
+</form>
+
+<script>
+function validateForm() {
+    var dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    var emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z]{5}\.[a-zA-Z]{2,3}$/;
+    var passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])(.{7,})$/;
+    if (!emailRegex.test(document.getElementById("email").value)) {
+        return alert("Invalid email format. Email should be in xyz123@gmail.com."), false;
+    }
+    if (!passwordRegex.test(document.getElementById("password").value)) {
+        return alert("Invalid password format. Password should contain at least one uppercase and special character"), false;
+    }
+    if (!dateRegex.test(document.getElementById("birth").value)) {
+        return alert("Invalid date format. Date should be in yyyy-mm-dd format."), false;
+    }
+    var currentDate = new Date().toISOString().split('T')[0]; 
+    if (birthdate > currentDate) {
+        return alert("Birthdate cannot be greater than the current date."), false;
+    }
+    return true;
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
